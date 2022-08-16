@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="description"
+    content="An imperial/metric body mass index (BMI) calculator, use it in good health"
+  >
+  <meta name="author" content="Nicholas Horne">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Body Mass Index (BMI) Calculator</title>
+  
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1 id="titleHeader">Body Mass Index (BMI) Calculator</h1>
+  
+  <div id="main">
+    <div id="main1">
+      <div id="unitsDiv">
+        <table id="unitsTable">
+          <tr>
+            <td>Units:</td>
+            <td>
+              <ul id="unitsList">
+                <li>
+                  <input type="radio" id="imperialRadio" name="units" checked>
+                  <label for="imperialRadio">Imperial</label>
+                </li>
+                <li>
+                  <input type="radio" id="metricRadio" name="units">
+                  <label for="metricRadio">Metric</label>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table> <!-- #unitsTable -->
+      </div> <!-- #unitsDiv -->
+      
+      <div id="insideFlowInputDivContainer">
+        <div id="imperialDiv">
+          <table id="imperialInputTable" class="inputTable">
+            <tr>
+              <td>Height:</td>
+              <td>
+                <input type="number" id="ft" min="1"> '
+                <input type="number" id="in" min="1" max="11.99" step="0.01"> "
+              </td>
+            </tr>
+            <tr>
+              <td>Weight:</td>
+              <td>
+                <input type="number" id="lb" min="1" step="0.01"> lb
+              </td>
+          </table>
+          <button id="calculateImperial" disabled>Calculate</button>
+          <button id="clearImperial">Clear</button>
+        </div> <!-- #imperialDiv -->
+        
+        <div id="metricDiv">
+          <table id="metricInputTable" class="inputTable">
+            <tr>
+              <td>Height:</td>
+              <td>
+                <input type="number" id="cm" min="1" step="0.01">
+                <select id="metricHeightUnit">
+                  <option>cm</option>
+                  <option>m</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Weight:</td>
+              <td>
+                <input type="number" id="kg" min="1" step="0.01"> kg
+              </td>
+          </table>
+          <button id="calculateMetric" disabled>Calculate</button>
+          <button id="clearMetric">Clear</button>
+        </div> <!-- #metricDiv -->
+      </div> <!-- #insideFlowInputDivContainer -->
+      
+      <div id="resultsDiv">
+        <span id="closeResults">&times;</span>
+        <table id="resultsTable">
+          <tr>
+            <td>Your BMI:</td>
+            <td id="bmiResultsCell"></td>
+          </tr>
+          <tr>
+            <td>Category:</td>
+            <td id="classResultsCell"></td>
+          </tr>
+          <tr>
+            <td>Health Risk:</td>
+            <td id="riskResultsCell"></td>
+          </tr>
+        </table> <!-- #resultsTable -->
+      </div> <!-- #resultsDiv -->
+    </div> <!-- #main1 -->
+    
+    <div id="main2">
+      <table id="categoriesTable">
+        <tr>
+          <th>BMI</th>
+          <th>Category</th>
+          <th>Health Risk</th>
+        </tr>
+        <tr id="underweightRow">
+          <td>Below 18.5</td>
+          <td>Underweight</td>
+          <td>Minimal</td>
+        </tr>
+        <tr id="normalRow">
+          <td>18.5 - 24.9</td>
+          <td>Normal</td>
+          <td>Minimal</td>
+        </tr>
+        <tr id="overweightRow">
+          <td>25 - 29.9</td>
+          <td>Overweight</td>
+          <td>Increased</td>
+        </tr>
+        <tr id="obeseClass1Row">
+          <td>30 - 34.9</td>
+          <td>Obese</td>
+          <td>High</td>
+        </tr>
+        <tr id="obeseClass2Row">
+          <td>35 - 39.9</td>
+          <td>Severely Obese</td>
+          <td>Very High</td>
+        </tr>
+        <tr id="obeseClass3Row">
+          <td>40+</td>
+          <td>Morbidly Obese</td>
+          <td>Extremely High</td>
+        </tr>
+      </table> <!-- #categoriesTable -->
+    </div> <!-- #main2 -->
+  </div> <!-- #main -->
+  
+  <div id="convertImperialToMetricDiv" class="conversionDiv">
+    <p>Convert imperial units to metric?</p>
+    <div class="conversionDivButtons">
+      <button id="convertImperialToMetricYes" disabled>Yes</button>
+      <button id="convertImperialToMetricNo" disabled>No</button>
+    </div>
+  </div>
+  
+  <div id="convertMetricToImperialDiv" class="conversionDiv">
+    <p>Convert metric units to imperial?</p>
+    <div class="conversionDivButtons">
+      <button id="convertMetricToImperialYes" disabled>Yes</button>
+      <button id="convertMetricToImperialNo" disabled>No</button>
+    </div>
+  </div>
+  
+  <div id="convertCentimetersToMetersDiv" class="conversionDiv">
+    <p>Convert height to meters?</p>
+    <div class="conversionDivButtons">
+      <button id="convertCentimetersToMetersYes" disabled>Yes</button>
+      <button id="convertCentimetersToMetersNo" disabled>No</button>
+    </div>
+  </div>
+  
+  <div id="convertMetersToCentimetersDiv" class="conversionDiv">
+    <p>Convert height to centimeters?</p>
+    <div class="conversionDivButtons">
+      <button id="convertMetersToCentimetersYes" disabled>Yes</button>
+      <button id="convertMetersToCentimetersNo" disabled>No</button>
+    </div>
+  </div>
+  
+  <script src="bmi.js"></script>
+</body>
+</html>
