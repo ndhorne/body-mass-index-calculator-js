@@ -1,5 +1,5 @@
 /*
-Copyright 2022, 2023 Nicholas D. Horne
+Copyright 2022, 2023, 2024 Nicholas D. Horne
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -567,29 +567,32 @@ if (
   ;
 }
 
-/*switch units to metric based on geolocation data (wip)
+//switch units to metric based on geolocation data
 (async function() {
-  const response = await fetch("http://ip-api.com/json/");
-  
-  if (response.ok) {
-    const result = await response.json();
+  try {
+    const response = await fetch("https://freeipapi.com/api/json");
     
-    if (
-      result.countryCode !== "US"
-      && result.countryCode !== "LR"
-      && result.countryCode !== "MM"
-    ) {
+    if (response.ok) {
+      const result = await response.json();
+      
       if (
-        imperialRadio.checked
-        && ftInput.value === ""
-        && inInput.value === ""
-        && lbInput.value === ""
+        result.countryCode !== "US"
+        && result.countryCode !== "LR"
+        && result.countryCode !== "MM"
       ) {
-        metricRadio.click();
+        if (
+          imperialRadio.checked
+          && ftInput.value === ""
+          && inInput.value === ""
+          && lbInput.value === ""
+        ) {
+          metricRadio.click();
+        }
       }
+    } else {
+      throw new Error("Network response was not OK");
     }
-  } else {
-    console.error("Error fetching geolocation data from IP Geolocation API");
+  } catch (err) {
+    console.error("Error fetching geolocation data:", err);
   }
 })();
-*/
